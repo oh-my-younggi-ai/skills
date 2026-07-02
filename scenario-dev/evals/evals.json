@@ -1,0 +1,26 @@
+{
+  "skill_name": "scenario-dev",
+  "evals": [
+    {
+      "id": 1,
+      "name": "discount-feature",
+      "prompt": "우리 스토어용 결제 할인 helper를 하나 만들어줘. cart subtotal이랑 coupon code를 받아서 최종 금액을 돌려주면 돼. 쿠폰 규칙은: SAVE10 = 전체 10% 할인, FREESHIP = $5 정액 할인인데 subtotal이 $50 이상일 때만, HALF = 50% 할인인데 subtotal이 $100 초과일 때만. 모르는 코드나 빈 코드는 subtotal 그대로 반환하고, subtotal이 음수면 거부해줘.",
+      "expected_output": "A discount module implemented with a scenario artifact (Given/When/Then for happy paths per coupon, threshold edge cases, unknown/empty code, negative subtotal error), each scenario backed by a passing automated test, and a traceability mapping.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "signup-validator",
+      "prompt": "회원가입 입력값 검증 함수를 추가하고 싶어. 체크할 것: email 형식이 유효한지, password가 최소 8자에 숫자랑 영문자를 둘 다 포함하는지, username이 3~20자 영숫자인지. 그리고 첫 번째 에러만 말고 검증 에러를 한 번에 다 모아서 반환해줘.",
+      "expected_output": "A validator implemented with a scenario artifact covering the all-valid happy path, each individual rule violation, the multiple-errors-at-once behavior, and empty/missing input; each scenario backed by an automated test; traceability mapping.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "name": "pagination-bugfix",
+      "prompt": "우리 코드에 paginate(items, page, perPage) 함수가 좀 이상해. 리스트가 비어 있으면 throw가 나고, page를 0으로 요청하면 이상한 게 나와. 현재 구현은 대충 이래: function paginate(items, page, perPage) { const start = (page - 1) * perPage; return items.slice(start, start + perPage); } 빈 리스트, page 0, 범위를 벗어난 page 같은 경우를 제대로 처리하도록 고쳐줘.",
+      "expected_output": "A bug fix driven by reproduction scenarios: the empty-list case, page 0 / out-of-range page, and the normal happy path — each captured as a Given/When/Then scenario with a test that goes red before the fix and green after; traceability mapping.",
+      "files": []
+    }
+  ]
+}

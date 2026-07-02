@@ -1,20 +1,31 @@
 # skills
 
 내가 만든 Claude Code 스킬 모음. 각 스킬은 **eval 정의 → 측정 → 실패모드 분석 → 개선 → 재측정**
-루프로 만들어지고, 그 이력을 스킬 안에 함께 보관한다.
+루프로 만들어지고, 그 이력(`CHANGELOG.md`, `evals/`)을 스킬 안에 함께 보관한다.
 
 ## 스킬 목록
 
-| 스킬 / 프로젝트 | 설명 | 상태 |
-|---|---|---|
-| [**cs-interview**](./cs-interview/) | CS 지식 위키 구축(cs-wiki) + 그 위키로 모의면접(cs-interviewer). 한 쌍 프로젝트 | ✅ 벤치 측정 완료 |
-| scenario-dev | BDD 시나리오 주도 개발 스킬 | 이관 예정 |
-| iterative-refactor | 배치 → 테스트 게이트 → 커밋 리팩터링 스킬 | 이관 예정 |
-| design-doc | 설계 문서 작성 스킬 | 이관 예정 |
-| bmad-quick-dev | 빠른 개발 워크플로우 스킬 | 이관 예정 |
+| 스킬 | 설명 |
+|---|---|
+| [scenario-dev](./scenario-dev/) | BDD 시나리오 주도 개발 (capture → confirm → cover → verify → present) |
+| [iterative-refactor](./iterative-refactor/) | 배치 → 테스트 게이트 → 커밋 리팩터링 |
+| [design-doc](./design-doc/) | 설계 문서 작성 (topic → clarify → draft & review) |
+| [bmad-quick-dev](./bmad-quick-dev/) | 빠른 개발 워크플로우 (clarify → plan → implement → review) |
 
-> "이관 예정" 스킬들은 `~/.claude/skills/` 에서 검증·정리 후 순차적으로 이 모음에 편입한다.
+## 별도 프로젝트
+
+- **cs-interview** — CS 지식 위키 구축(cs-wiki) + 그 위키 기준 모의면접(cs-interviewer).
+  한 쌍이라 독립 repo 로 분리: https://github.com/oh-my-younggi-ai/cs-interview
+
+## 설치
+
+Claude Code 는 스킬을 `~/.claude/skills/<name>/SKILL.md` 로 인식한다. 원하는 스킬 폴더를 복사:
+
+```bash
+cp -R scenario-dev ~/.claude/skills/
+```
 
 ## 컨벤션
-- 스킬은 `<project>/skills/<name>/SKILL.md` 구조로 설치 가능한 단위를 유지한다.
-- 개선 이력은 각 프로젝트의 `CHANGELOG.md`, 측정 수치는 `benchmarks/` 에 둔다.
+
+- 스킬은 `<name>/SKILL.md` + step-file 아키텍처로 설치 가능한 단위를 유지한다.
+- 개선 이력은 각 스킬의 `CHANGELOG.md`, 측정 수치는 `evals/` 에 둔다.
