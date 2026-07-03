@@ -2,6 +2,9 @@
 
 Full benchmark records: `./benchmarks/`
 
+## 2026-07-02 — 유지보수
+- org 이관: 벤치 기록 경로를 repo 내 `./benchmarks/` 로 정정.
+
 ## iter-01 · 2026-06-15 — initial draft
 
 **Pass rate:** 1.00 (20/20) vs baseline 0.50 · **Δ** +0.50 · **Token cost** ≈ 1.65×
