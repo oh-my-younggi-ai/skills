@@ -1,6 +1,6 @@
 ---
 shared_conventions_dir: '~/.claude/conventions'
-settings_file: '~/.claude/skills/design-doc/settings.md'
+settings_file: './settings.md'
 ---
 
 # Design Doc Workflow

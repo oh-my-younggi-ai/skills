@@ -1,6 +1,6 @@
 # scenario-dev — Changelog
 
-Full benchmark records: `~/.claude/skill-benchmarks/scenario-dev/`
+Full benchmark records: `./benchmarks/`
 
 ## iter-01 · 2026-06-15 — initial draft
 

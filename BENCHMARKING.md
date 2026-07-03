@@ -6,12 +6,13 @@ The bulky raw eval outputs — subagent transcripts, the projects they produced,
 
 ## Layout
 
+각 스킬이 자기 `benchmarks/` 폴더를 가진다 (예: `skills/scenario-dev/benchmarks/`, `cs-interview/benchmarks/`):
+
 ```
-skill-benchmarks/
-└── <skill-name>/
-    ├── README.md       # trajectory index: every iteration, its headline metric, a link
-    ├── _template.md    # copy this for each new record
-    └── iter-NN-<slug>.md
+<skill>/benchmarks/
+├── README.md       # trajectory index: every iteration, its headline metric, a link
+├── _template.md    # copy this for each new record
+└── iter-NN-<slug>.md
 ```
 
 ## How a record is produced

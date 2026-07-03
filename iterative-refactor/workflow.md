@@ -1,6 +1,6 @@
 ---
 shared_conventions_dir: '~/.claude/conventions'
-settings_file: '~/.claude/skills/iterative-refactor/settings.md'
+settings_file: './settings.md'
 ---
 
 # Iterative Refactor Workflow
