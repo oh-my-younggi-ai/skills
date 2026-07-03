@@ -1,26 +1,53 @@
 # Skill Benchmarks
 
-Curated, version-controlled performance records for the skills in this repo. Each skill gets a subfolder; each benchmarked **update** to a skill gets one dated markdown record that quantifies how the new version performed against a baseline (the previous version, or no-skill).
+스킬을 바꿀 때마다 **무엇이 얼마나 좋아졌는지**를 결정론적으로 측정해 남긴다.
+목적은 단일 점수가 아니라 **개선 궤적** — iter마다 지표 델타를 기록해 감사 가능하게 한다.
 
-The bulky raw eval outputs — subagent transcripts, the projects they produced, the HTML review viewer — live in the gitignored `skills/<skill>-workspace/` and are **not** committed. Only the distilled numbers and decisions land here, so the history stays readable and diffable.
+원시 eval 산출물(서브에이전트 트랜스크립트, 생성 프로젝트 등)은 gitignored `*-workspace/`에 남고
+커밋하지 않는다. 여기엔 정제된 수치·결정만 남긴다.
+
+## 채점 3층 (섞지 않는다)
+
+### ① 회귀 바닥 (floor) — pass/fail, 항상 green 목표
+"깨지면 안 되는" 최소 방어선. 전부 **결정론적 검사**(파일 존재·frontmatter 파싱·grep·해시).
+LLM/사람 판단 없음. 통과하면 100%에 붙으므로 **진행 지표가 아니라 회귀 가드**다.
+회귀 테스트와 같다: green = 안 망가짐(≠ 더 좋아짐).
+
+### ② 진행 지표 (metrics) — 연속값, 헤드룸 있음
+"얼마나 좋아졌나"의 신호. **카운트/비율**로 재고 judge 없이 기계로 계산한다.
+스펙트럼이 있는 건 pass/fail이 아니라 연속 지표로 잰다(예: lint recall 3/5 → 5/5).
+
+### ③ 확장 eval 셋 — 포화 방지
+매 iter 더 어려운 시나리오/시드를 추가한다. pass-rate·지표가 천장에 붙지 않도록 실패 여지를 유지한다.
+
+## 내용 품질은 점수에서 제외
+개념 설명이 "좋은가"는 객관 측정 불가 + baseline과 동률(비변별)이라 **점수/지표에 넣지 않는다.**
+정말 필요하면 별도 LLM 코멘트로만 남기고 수치에는 반영하지 않는다.
+
+## 채점은 결정론적 grader가 한다
+문자열 어설션을 LLM이 읽고 판정하지 않는다. floor·지표는 실행 결과(스킬이 만든 산출물 + 응답
+텍스트)에 대한 **스크립트 predicate**로 채점한다. 스킬별 측정식은 그 스킬의 `METRICS.md` 참고.
+
+## 기록 포맷 — 지표 델타 표
+iter마다 레코드 하나. 핵심은 **이전 iter 대비 델타**.
+
+```
+| 지표 | 이전 | 이번 | Δ |
+|---|---|---|---|
+| lint recall (hard-seed) | 0.60 | 0.85 | ▲ |
+| 교차링크 밀도 (/page)    | 1.4  | 2.1  | ▲ |
+| 역링크 완전성           | 0.70 | 0.92 | ▲ |
+| token cost              | 1.46× | 1.40× | ▼ (좋음) |
+| 회귀 바닥               | 19/19 | 19/19 | green |
+```
 
 ## Layout
 
-각 스킬이 자기 `benchmarks/` 폴더를 가진다 (예: `skills/scenario-dev/benchmarks/`, `cs-interview/benchmarks/`):
+각 스킬이 자기 `benchmarks/` 폴더를 가진다:
 
 ```
 <skill>/benchmarks/
-├── README.md       # trajectory index: every iteration, its headline metric, a link
-├── _template.md    # copy this for each new record
-└── iter-NN-<slug>.md
+├── README.md    # 궤적 인덱스 (iter별 지표 요약 + 링크)
+├── METRICS.md   # 이 스킬의 floor 검사 + 진행 지표 정의·측정식 (grader 스펙)
+└── iter-NN-*.md # iter별 지표 델타 레코드
 ```
-
-## How a record is produced
-
-Per update (the skill-creator eval loop, in short):
-
-1. Run the eval set with the **new** skill version AND a **baseline** (previous version, or no-skill).
-2. Grade objective assertions; aggregate pass-rate, tokens, and duration per config.
-3. Distill the result into `iter-NN-<slug>.md`, and add a row to the skill's `README.md`.
-
-The point: make each change to a skill prove it helped (or at least didn't regress), with numbers, before it's accepted.
