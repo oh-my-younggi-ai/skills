@@ -1,7 +1,8 @@
 # skills
 
-내가 만든 Claude Code 스킬 모음. 각 스킬은 **eval 정의 → 측정 → 실패모드 분석 → 개선 → 재측정**
-루프로 만들어지고, 그 이력(`CHANGELOG.md`, `evals/`)을 스킬 안에 함께 보관한다.
+내가 만든 Claude Code 스킬 모음. **eval 정의 → 측정 → 실패모드 분석 → 개선 → 재측정** 루프를
+지향한다. 개선 이력은 각 스킬의 `CHANGELOG.md`에 남기고, 측정까지 이뤄진 스킬(scenario-dev,
+cs-interview 의 cs-wiki)은 `evals/`·`benchmarks/`를 함께 보관한다. 나머지는 순차 도입 중.
 
 ## 스킬 목록
 
