@@ -11,6 +11,7 @@
 | [iterative-refactor](./iterative-refactor/) | 배치 → 테스트 게이트 → 커밋 리팩터링 |
 | [design-doc](./design-doc/) | 설계 문서 작성 (topic → clarify → draft & review) |
 | [bmad-quick-dev](./bmad-quick-dev/) | 빠른 개발 워크플로우 (clarify → plan → implement → review) |
+| [blog-voice](./blog-voice/) | 블로그 문체 가이드 — 회고·기술 에세이 작성/퇴고 시 내 말투를 유지 |
 
 ## 별도 프로젝트
 
