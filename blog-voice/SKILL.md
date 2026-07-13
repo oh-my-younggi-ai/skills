@@ -11,7 +11,7 @@ description: >-
 
 SCPC 회고(RETROSPECTIVE.md, HARNESS_LEVELS.md)에서 추출한 문체 규칙.
 새 글을 쓰거나 다듬을 때 아래 규칙을 따른다. 원본 예시가 필요하면
-`/Users/giyoung/Desktop/code/scpc/RETROSPECTIVE.md`를 참조.
+`/Users/giyoung/Desktop/code/oh-my-younggi-ai/scpc/RETROSPECTIVE.md`를 참조.
 
 ## 1. 글의 뼈대
 
