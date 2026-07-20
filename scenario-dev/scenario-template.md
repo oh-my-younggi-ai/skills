@@ -26,19 +26,32 @@ test_command: ''       # the command that runs this artifact's scenarios
 
 <!-- Each scenario: stable id + short name, then Given/When/Then.
      The Then MUST be observable — something a test can assert.
-     Cover the happy path, the edge cases that matter, and the error cases. -->
+     Cover the happy path, the edge cases that matter, and the error cases.
+
+     Every scenario carries a `Verification:` line, `auto` or `manual`.
+     `manual` REQUIRES a reason and is only legal after the seam split was
+     attempted and yielded nothing automatable (see VERIFICATION STANDARD). -->
 
 ### S1: <happy-path name>
 
 - **Given** <starting state>
 - **When** <action>
 - **Then** <observable result>
+- **Verification:** auto
 
 ### S2: <edge or error name>
 
 - **Given** …
 - **When** …
 - **Then** …
+- **Verification:** auto
+
+### S3: <manual residue, only if the split left one>
+
+- **Given** …
+- **When** …
+- **Then** …
+- **Verification:** manual - <why nothing automatable remains: hardware, third-party surface, or human judgement. Name the auto scenario it was split from.>
 
 ## Out of Scope
 
@@ -56,10 +69,11 @@ test_command: ''       # the command that runs this artifact's scenarios
      Status per scenario: pending → covered (test written & green in isolation)
      → verified (full suite green in step-04). Link targets are relative to THIS file's directory. -->
 
-| Scenario | Status | Test | Implementation |
-|----------|--------|------|----------------|
-| S1 | pending | — | — |
-| S2 | pending | — | — |
+| Scenario | Verification | Status | Test | Implementation |
+|----------|--------------|--------|------|----------------|
+| S1 | auto | pending | — | — |
+| S2 | auto | pending | — | — |
+| S3 | manual | pending | walkthrough in Verification Log | — |
 
 ## Verification Log
 

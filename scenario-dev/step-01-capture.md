@@ -38,8 +38,12 @@ Never ask a question you already know the answer to.
    - the **error cases** — invalid input, downstream failure, missing permission.
 
    Give each a stable id (`S1`, `S2`, …) and a short name, and make every **Then observable** — something a test can later assert. Then self-review against the SCENARIO COMPLETENESS STANDARD. If you considered a case and deliberately excluded it, write it into Out of Scope rather than dropping it silently — a contract is defined as much by its edges as its center.
-6. **Write the artifact.** Read `./scenario-template.md` fully, fill it out (status `draft`), and write it to `{scenario_dir}/scenario-{slug}.md`. Derive a kebab-case slug from the intent; if there's a tracking id (story/issue/ticket), lead with it (e.g. `gh-47-retry-logic`). Set `scenario_file` to that path. If the file already exists with status `draft`, treat it as the same work and resume it; otherwise suffix `-2`, `-3`, etc.
-7. **Route.**
+6. **Split the verification seam** (see VERIFICATION STANDARD). Walk the set once more, asking of each scenario: *could this project's test runner assert this Then?*
+   - Where the answer is no, try to split the scenario into an automatable assertion plus a manual residue, giving each half its own stable id.
+   - Mark every scenario `auto` or `manual`. A `manual` mark needs a reason and is only legal once the split has been attempted and left nothing automatable.
+   - If the project has no runner for this layer at all (say, a mobile project with no instrumented-test setup), record that here instead of silently marking everything manual. It is a setup decision for the human at the next checkpoint, not yours.
+7. **Write the artifact.** Read `./scenario-template.md` fully, fill it out (status `draft`), and write it to `{scenario_dir}/scenario-{slug}.md`. Derive a kebab-case slug from the intent; if there's a tracking id (story/issue/ticket), lead with it (e.g. `gh-47-retry-logic`). Set `scenario_file` to that path. If the file already exists with status `draft`, treat it as the same work and resume it; otherwise suffix `-2`, `-3`, etc.
+8. **Route.**
    - **Fast lane** — a single, trivial scenario with zero blast radius: no realistic path by which it breaks anything else, and no design decisions. → **EARLY EXIT** `./step-fast.md`.
    - **Full flow** — everything else, and whenever you're unsure whether the blast radius is truly zero. → continue to NEXT.
 

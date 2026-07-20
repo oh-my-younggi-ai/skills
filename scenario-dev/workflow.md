@@ -28,6 +28,22 @@ Automation-first. Each scenario ends in one of two states:
 
 Reaching for the manual fallback when a real test was possible is the main way this workflow goes wrong — when in doubt, write the test.
 
+### Split the seam before calling anything manual
+
+A criterion that "needs a real device" or "needs a third-party app" is almost never fully unautomatable. It is usually one automatable assertion welded to one manual observation. Before marking a scenario manual, try to split it:
+
+```
+"the share sheet reaches Instagram Stories"
+  -> S7 (auto)    the app fires ACTION_SEND with the expected MIME type and URI
+  -> S8 (manual)  Instagram opens on the story editor with the video loaded
+```
+
+The automatable half becomes a scenario with an observable Then and a real test. Only the residue that genuinely depends on hardware, a third-party surface, or human judgement stays manual, and it must record why.
+
+A scenario is marked `manual` only after this split was attempted and produced nothing automatable. "Manual" is a conclusion, never a starting assumption.
+
+This matters most in device, media, and integration work, where the automation boundary is a design decision that changes what the scenarios *are*. Discovering it during implementation is too late, because the contract is frozen by then.
+
 ## SCOPE STANDARD
 
 Target a **single user-facing goal**. One cohesive behavior may span many files and many scenarios — that is fine and stays in one artifact. What does *not* belong together is **two independently shippable goals** — each could be its own PR without breaking the other. When you notice that, propose a split rather than letting one artifact sprawl.

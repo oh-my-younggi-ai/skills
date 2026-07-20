@@ -10,9 +10,10 @@
 1. **Self-review** the draft once more against the SCENARIO COMPLETENESS STANDARD. If you spot a genuine gap, fix the draft before presenting it. If closing the gap needs a human decision (e.g. "should we handle the offline case at all?"), leave it and raise it at the checkpoint.
 2. **Present the scenario set** so the human can take in the whole shape at a glance — they're approving a contract, so they need to see its edges, not just its center. Show:
    - a one-line intent summary;
-   - each scenario as `S1: name` with a single-line behavior summary, grouped into happy / edge / error;
+   - each scenario as `S1: name` with a single-line behavior summary, grouped into happy / edge / error, each tagged `auto` or `manual`;
    - the Out of Scope list;
    - the artifact path (CWD-relative, so it's clickable).
+3. **Surface the verification boundary.** If any scenario is marked `manual`, list those separately with their reasons, and say plainly that the suite will not protect them. Manual scenarios are the ones that rot first, so the human should be approving that exposure knowingly here, not discovering it in step 4. If a whole layer has no runner, raise it now as a setup decision rather than letting it become a pile of manual marks.
 
 ### CHECKPOINT
 
