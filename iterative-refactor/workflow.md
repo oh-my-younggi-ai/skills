@@ -1,5 +1,5 @@
 ---
-shared_conventions_dir: '~/.claude/conventions'
+shared_conventions_dir: '~/.config/ai-rules/conventions'
 settings_file: './settings.md'
 ---
 
@@ -12,7 +12,7 @@ settings_file: './settings.md'
 
 ## 경로 규칙
 
-- `~/.claude/...`로 시작하는 경로 (`shared_conventions_dir`, `settings_file`): 사용자 홈 디렉토리 기준 절대 경로. 모든 프로젝트가 공유하는 전역 설정이며, 현재 작업 디렉토리와 무관하다.
+- `~/.config/ai-rules/...`로 시작하는 경로 (`shared_conventions_dir`, `settings_file`): 사용자 홈 디렉토리 기준 절대 경로. 도구 중립 경로이며 Claude Code·Codex 어디서 실행하든 동일하게 해석된다. 모든 프로젝트가 공유하는 전역 설정이며, 현재 작업 디렉토리와 무관하다.
 - `{project_root}`로 시작하는 경로 (`{progression_dir}` 등): 스킬을 실행한 프로젝트 루트(현재 작업 디렉토리) 기준. 프로젝트마다 별도로 생성된다.
 
 

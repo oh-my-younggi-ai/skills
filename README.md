@@ -22,11 +22,34 @@ scenario-dev, cs-interview 의 cs-wiki)은 `evals/`·`benchmarks/`를 함께 보
 
 ## 설치
 
-Claude Code 는 스킬을 `~/.claude/skills/<name>/SKILL.md` 로 인식한다. 원하는 스킬 폴더를 복사:
+Claude Code 와 Codex 는 **같은 SKILL.md 포맷**을 쓴다. 탐색 경로만 다르다.
+
+| 경로 | 읽는 도구 |
+|---|---|
+| `~/.claude/skills/<name>/` | Claude Code |
+| `~/.codex/skills/<name>/` | Codex |
+| `~/.agents/skills/<name>/` | 크로스 에이전트 공용 (Codex 포함) |
+
+가장 간단한 설치는 복사다:
 
 ```bash
 cp -R scenario-dev ~/.claude/skills/
 ```
+
+여러 도구에서 함께 쓴다면 **복사본을 만들지 말고 심볼릭 링크로 한 벌만 유지**한다.
+사본은 원본이 갱신돼도 따라오지 않아 조용히 낡는다:
+
+```bash
+ln -sfn "$PWD/scenario-dev" ~/.agents/skills/scenario-dev   # 공용 홈
+ln -sfn "$PWD/scenario-dev" ~/.claude/skills/scenario-dev
+```
+
+> **주의 — 중복 노출**
+> 같은 스킬을 여러 탐색 경로에 두면 목록에 그 수만큼 중복해서 뜬다.
+> Codex 는 `~/.codex/skills` 와 `~/.agents/skills` 를 모두 읽으므로, 둘 중 **한 곳에만** 둔다.
+
+일부 스킬(`design-doc`, `iterative-refactor`)은 공통 설정을 `~/.config/ai-rules/conventions` 에서
+읽는다. 이 경로는 도구 중립이며, 실제 파일이 있는 곳으로 심볼릭 링크를 걸어두면 된다.
 
 ## 벤치마킹
 

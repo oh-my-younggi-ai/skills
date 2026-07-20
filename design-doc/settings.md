@@ -1,7 +1,7 @@
 # Design Doc — 스킬 전용 설정
 
 이 파일은 직접 수정해서 이 스킬만의 동작을 조정할 수 있습니다.
-공통 설정은 `~/.claude/conventions/settings.md`를 따르며, 여기서 같은 키를 정의하면 이 값이 우선합니다.
+공통 설정은 `~/.config/ai-rules/conventions/settings.md`를 따르며, 여기서 같은 키를 정의하면 이 값이 우선합니다.
 
 ---
 
