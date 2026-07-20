@@ -42,6 +42,17 @@
 
 - <analyst observations: non-discriminating assertions, high-variance/flaky evals, time/token tradeoffs, notable transcript behavior>
 
+## 이 수치가 증명하지 못하는 것
+
+숫자만 남기면 다음 회차의 내가 과신한다. 아래를 명시한다.
+
+- **측정하지 않은 것** - eval 셋 밖의 시나리오, 돌리지 않은 설정
+- **프록시 지표의 한계** - 각 지표가 과소/과대 계수하는 경우.
+  보정한 이력이 있으면 무엇을 왜 고쳤는지
+- **환경 요인** - 이 변경과 무관하게 실패한 항목. baseline 에서도 동일하게
+  재현되는지 확인했는지
+- **남은 회귀 리스크** - 이번 변경으로 깨질 수 있는데 검사되지 않는 것
+
 ## Decision → next iteration
 
 - <what to change next, and why the numbers/feedback point there>
