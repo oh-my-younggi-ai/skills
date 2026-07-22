@@ -1,0 +1,10 @@
+{
+  "eval_id": 4,
+  "eval_name": "manual-walkthrough-identity",
+  "prompt": "scenario-dev Step 5를 완료해줘. 검증이 끝난 artifact에 Scenario Traceability가 없고 수동 walkthrough 로그에 시나리오 ID가 없다. frozen block은 고치지 말고 완료 증거를 보강해줘.",
+  "assertions": [
+    "The completed artifact contains a Scenario Traceability row for S1 and S2.",
+    "The manual verification log identifies S2 and records the observed walkthrough.",
+    "The completed artifact has status done only after its completion evidence is complete."
+  ]
+}

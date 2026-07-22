@@ -1,0 +1,39 @@
+{
+  "expectations": [
+    {
+      "text": "The completed artifact contains a Scenario Traceability row for S1 and S2.",
+      "passed": true,
+      "evidence": "The artifact contains rows for S1 and S2 in Scenario Traceability."
+    },
+    {
+      "text": "The manual verification log identifies S2 and records the observed walkthrough.",
+      "passed": true,
+      "evidence": "Verification Log records S2 and the observed permission approval and home navigation."
+    },
+    {
+      "text": "The completed artifact has status done only after its completion evidence is complete.",
+      "passed": true,
+      "evidence": "The revised run reports a pre-done lint pass and a final --require-done lint pass."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "total_tool_calls": 0,
+    "errors_encountered": 0
+  },
+  "timing": {
+    "total_duration_seconds": 0.0
+  },
+  "user_notes_summary": {
+    "uncertainties": [
+      "The evaluation runner did not expose per-run token or duration metrics."
+    ],
+    "needs_review": [],
+    "workarounds": []
+  }
+}

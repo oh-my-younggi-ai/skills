@@ -1,0 +1,39 @@
+{
+  "expectations": [
+    {
+      "text": "The completed artifact contains a Scenario Traceability row for S1 and S2.",
+      "passed": true,
+      "evidence": "The baseline artifact contains rows for S1 and S2 in Scenario Traceability."
+    },
+    {
+      "text": "The manual verification log identifies S2 and records the observed walkthrough.",
+      "passed": false,
+      "evidence": "The baseline log records a device observation but never identifies S2."
+    },
+    {
+      "text": "The completed artifact has status done only after its completion evidence is complete.",
+      "passed": false,
+      "evidence": "The new completion lint rejects the baseline artifact because the S2 manual walkthrough is not identifiable in Verification Log."
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 2,
+    "total": 3,
+    "pass_rate": 0.3333
+  },
+  "execution_metrics": {
+    "total_tool_calls": 0,
+    "errors_encountered": 0
+  },
+  "timing": {
+    "total_duration_seconds": 0.0
+  },
+  "user_notes_summary": {
+    "uncertainties": [
+      "The evaluation runner did not expose per-run token or duration metrics."
+    ],
+    "needs_review": [],
+    "workarounds": []
+  }
+}

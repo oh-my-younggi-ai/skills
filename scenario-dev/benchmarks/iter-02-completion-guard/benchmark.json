@@ -1,0 +1,138 @@
+{
+  "metadata": {
+    "skill_name": "scenario-dev",
+    "skill_path": "/Users/giyoung/Desktop/code/oh-my-younggi-ai/skills/scenario-dev",
+    "executor_model": "unavailable",
+    "analyzer_model": "inline review",
+    "timestamp": "2026-07-22T05:38:30Z",
+    "evals_run": [
+      4
+    ],
+    "runs_per_configuration": 1
+  },
+  "runs": [
+    {
+      "eval_id": 4,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 3,
+        "failed": 0,
+        "total": 3,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The completed artifact contains a Scenario Traceability row for S1 and S2.",
+          "passed": true,
+          "evidence": "The artifact contains rows for S1 and S2 in Scenario Traceability."
+        },
+        {
+          "text": "The manual verification log identifies S2 and records the observed walkthrough.",
+          "passed": true,
+          "evidence": "Verification Log records S2 and the observed permission approval and home navigation."
+        },
+        {
+          "text": "The completed artifact has status done only after its completion evidence is complete.",
+          "passed": true,
+          "evidence": "The revised run reports a pre-done lint pass and a final --require-done lint pass."
+        }
+      ],
+      "notes": [
+        "The evaluation runner did not expose per-run token or duration metrics."
+      ]
+    },
+    {
+      "eval_id": 4,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.3333,
+        "passed": 1,
+        "failed": 2,
+        "total": 3,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The completed artifact contains a Scenario Traceability row for S1 and S2.",
+          "passed": true,
+          "evidence": "The baseline artifact contains rows for S1 and S2 in Scenario Traceability."
+        },
+        {
+          "text": "The manual verification log identifies S2 and records the observed walkthrough.",
+          "passed": false,
+          "evidence": "The baseline log records a device observation but never identifies S2."
+        },
+        {
+          "text": "The completed artifact has status done only after its completion evidence is complete.",
+          "passed": false,
+          "evidence": "The new completion lint rejects the baseline artifact because the S2 manual walkthrough is not identifiable in Verification Log."
+        }
+      ],
+      "notes": [
+        "The evaluation runner did not expose per-run token or duration metrics."
+      ]
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.3333,
+        "stddev": 0.0,
+        "min": 0.3333,
+        "max": 0.3333
+      },
+      "time_seconds": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.67",
+      "time_seconds": "+0.0",
+      "tokens": "+0"
+    }
+  },
+  "notes": [
+    "The revised skill passes all three completion-evidence assertions, while the baseline misses the manual scenario identifier and fails the new lint.",
+    "This is one paired run for a single manual-walkthrough fixture. It demonstrates the guard's targeted behavior, not a general pass-rate estimate.",
+    "The evaluation runner did not expose reliable per-run token or duration metrics, so no efficiency comparison is claimed.",
+    "Goal compatibility is a Codex adapter rule and was reviewed as workflow policy, not included in this tool-neutral skill benchmark."
+  ]
+}

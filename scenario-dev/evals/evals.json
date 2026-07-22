@@ -19,7 +19,21 @@
       "id": 3,
       "name": "pagination-bugfix",
       "prompt": "우리 코드에 paginate(items, page, perPage) 함수가 좀 이상해. 리스트가 비어 있으면 throw가 나고, page를 0으로 요청하면 이상한 게 나와. 현재 구현은 대충 이래: function paginate(items, page, perPage) { const start = (page - 1) * perPage; return items.slice(start, start + perPage); } 빈 리스트, page 0, 범위를 벗어난 page 같은 경우를 제대로 처리하도록 고쳐줘.",
-      "expected_output": "A bug fix driven by reproduction scenarios: the empty-list case, page 0 / out-of-range page, and the normal happy path — each captured as a Given/When/Then scenario with a test that goes red before the fix and green after; traceability mapping.",
+      "expected_output": "A bug fix driven by reproduction scenarios: the empty-list case, page 0 / out-of-range page, and the normal happy path - each captured as a Given/When/Then scenario with a test that goes red before the fix and green after; traceability mapping.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "name": "manual-walkthrough-identity",
+      "prompt": "Android 권한 온보딩 시나리오는 자동 검증과 실기기 walkthrough를 마쳤는데, 문서에는 Coverage Map만 있고 Scenario Traceability가 없어. 수동 검증 로그도 시나리오 ID 없이 적혀 있어. frozen 계약은 바꾸지 말고 Step 5 완료 조건을 충족하도록 정리해줘.",
+      "expected_output": "A completed scenario artifact with traceability for every scenario, a manual walkthrough log that identifies the manual scenario and its observation, and status done only after completion evidence is valid.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "name": "goal-checkpoint",
+      "prompt": "Codex에서 장기 goal을 켜고 scenario-dev로 결제 변경을 진행 중이야. Step 2에서 인간 승인 HALT에 도달했지만 goal은 아직 끝나지 않았어. 지금 목표, plan, 시나리오 artifact를 각각 어떤 상태로 두고 무엇을 해야 하는지 알려줘.",
+      "expected_output": "A response that keeps the goal active, pauses at the scenario-dev approval checkpoint, preserves the artifact as the source of truth, and uses the plan only to mirror the current step.",
       "files": []
     }
   ]
